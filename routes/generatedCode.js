@@ -13,7 +13,8 @@ router.post("/generate", async(req,res)=> {
         model: "gemini-2.5-flash",
         contents: prompt,
         });
-        const data = response.text;
+        const code = response.text;
+        const data =code.replace("```html","").replace("```","").trim();
         res.status(200).json({data});
     } catch (error) {
         res.status(400).json({message:error.message})
