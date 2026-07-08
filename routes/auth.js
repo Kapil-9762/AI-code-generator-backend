@@ -2,7 +2,6 @@ import { Router } from "express";
 import bcrypt from 'bcrypt';
 import User from "../modules/user.js";
 const router = Router();
-
 // sign the page
 router.post("/register",async(req, res) => {
    try {
@@ -16,7 +15,6 @@ router.post("/register",async(req, res) => {
      res.status(200).json({message:"User already exist."})
    } 
 });
-
 router.post("/signin", async (req, res) => {
     try {
         const user = await User.findOne({ email: req.body.email });
@@ -33,5 +31,4 @@ router.post("/signin", async (req, res) => {
         res.status(400).json(error.message);
     }
 });
-
 export default router;
